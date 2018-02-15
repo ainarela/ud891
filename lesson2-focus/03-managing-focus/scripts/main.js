@@ -1,3 +1,5 @@
+var isFirstPage = true;
+
 page('/', function() {
   page.redirect('/what-is-vegemite');
 });
@@ -18,6 +20,16 @@ page('/:slug', function(context) {
   var newPage = document.querySelector('main [data-page='+slug+']');
   newMenuItem.classList.add('is-active');
   newPage.classList.add('is-active');
+
+  // On the first load, don't move the focus around
+  // Wait until the user has clicked a navigation item
+  if(isFirstPage) {
+    isFirstPage = false;
+    return;
+  }
+
+  // Move focus to the heading in the new page
+  newPage.querySelector('h2').focus();
 
 });
 
