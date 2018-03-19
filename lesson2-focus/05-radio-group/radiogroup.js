@@ -31,7 +31,14 @@
 
         e.preventDefault();
 
-        // This seems like a good place to do some stuff :)
+        // If the focused item is the first, focus the last one
+        // Otherwise, focus the previous item in the array
+        if( this.focusedIdx === 0 ) {
+          this.focusedIdx = this.buttons.length - 1;
+        } else {
+          // this.focusedIdx = this.focusedIdx - 1;
+          this.focusedIdx--;
+        }
 
         break;
 
@@ -42,7 +49,14 @@
 
         e.preventDefault();
 
-        // This seems like a good place to do some stuff :)
+        // If the focused item is the last, focus the first one
+        // Otherwise, focus the next item in the array
+        if( this.focusedIdx === (this.buttons.length - 1) ) {
+          this.focusedIdx = 0;
+        } else {
+          // this.focusedIdx = this.focusedIdx + 1;
+          this.focusedIdx++;
+        }
 
         break;
       }
